@@ -303,6 +303,62 @@ section .list .item.active .content .action-btn {
     justify-content: space-between;
 }
 
+/* Ajuste no Header para permitir cliques no menu */
+header {
+    position: fixed;
+    width: 90vw; /* Aumentado para dar mais espaço */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Garantir que fique acima de tudo */
+    margin-top: 20px;
+    pointer-events: auto; /* IMPORTANTE: Mudar de none para auto */
+}
+
+header h1 span {
+    color: var(--claro);
+}
+
+/* Estilização da Navbar */
+.navbar ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 25px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--vidro);
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: var(--claro);
+    text-shadow: 0 0 10px var(--secundaria);
+}
+
+.navbar ul li a.active {
+    color: var(--secundaria);
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+}
+
 .modal-show {
     display: flex !important;
 }
