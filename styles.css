@@ -36,14 +36,7 @@ header {
     align-items: center;
 }
 
-.left-group {
-    display: flex;
-    align-items: center;
-}
-
 .nav-logo {
-    position: static !important;
-    transform: none !important;
     color: var(--secundaria);
     font-family: Helvetica, sans-serif;
     font-size: 2.8rem;
@@ -69,11 +62,9 @@ header {
     font-weight: 700;
     text-transform: uppercase;
     transition: 0.3s;
-    letter-spacing: 1px;
 }
 
-.navbar ul li a.active,
-.navbar ul li a:hover {
+.navbar ul li a.active, .navbar ul li a:hover {
     color: var(--claro);
     text-shadow: 0 0 10px var(--secundaria);
 }
@@ -114,8 +105,10 @@ section .list .item.active {
 section .list .item .product-img {
     position: absolute;
     top: 50%;
+    left: 0;
     transform: translateY(-50%);
     width: 50%;
+    z-index: 2;
 }
 
 section .list .item .product-img img {
@@ -140,14 +133,13 @@ section .list .item .content {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding-right: 5%;
-    z-index: 2;
+    z-index: 5;
+    pointer-events: none;
 }
 
 section .list .item .content .subtitle,
 section .list .item .content h2,
-section .list .item .content .description,
-section .list .item .content .action-btn {
+section .list .item .content .description {
     opacity: 0;
     transform: translateX(100px);
     transition: 0.8s;
@@ -155,8 +147,7 @@ section .list .item .content .action-btn {
 
 section .list .item.active .content .subtitle,
 section .list .item.active .content h2,
-section .list .item.active .content .description,
-section .list .item.active .content .action-btn {
+section .list .item.active .content .description {
     opacity: 1;
     transform: translateX(0);
 }
@@ -187,7 +178,10 @@ section .list .item .content .description {
     line-height: 1.6;
 }
 
-section .list .item .content .action-btn {
+section .list .item .action-btn {
+    position: absolute;
+    bottom: 15%;
+    right: 0;
     background: linear-gradient(45deg, var(--primaria), var(--secundaria));
     color: white;
     padding: 12px 35px;
@@ -196,27 +190,24 @@ section .list .item .content .action-btn {
     cursor: pointer;
     font-weight: 800;
     text-transform: uppercase;
-    margin-right: 60px;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 0.8s, opacity 0.8s, background 0.6s ease-in-out, color 0.6s ease-in-out, border 0.6s ease-in-out;
+    z-index: 999;
+    pointer-events: auto !important;
 }
 
-section .list .item .content .action-btn:hover {
-    background: #000;
-    border: 1px solid var(--primaria);
+section .list .item.active .action-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section .list .item .action-btn:hover {
+    background: #000000;
     color: var(--secundaria);
+    border: 1px solid var(--secundaria);
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
-}
-
-section .list .item.active .content h2 {
-    transition-delay: 0.3s;
-}
-
-section .list .item.active .content .description {
-    transition-delay: 0.5s;
-}
-
-section .list .item.active .content .action-btn {
-    transition-delay: 0.7s;
+    box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
 }
 
 .arrows {
@@ -236,23 +227,42 @@ section .list .item.active .content .action-btn {
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    border: 1px solid var(--vidro);
-    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     cursor: pointer;
-    transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.6s ease-in-out, border-color 0.6s ease-in-out, transform 0.3s ease;
 }
 
 .arrows button img {
     width: 25px;
-    height: auto;
+    transition: filter 0.6s ease;
 }
 
-.arrows button:nth-child(1) {
+.arrows button:nth-child(1) img {
     transform: scaleX(-1);
+}
+
+.arrows button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.arrows button:nth-child(1):hover img {
+    transform: scaleX(-1);
+}
+
+.arrows button:hover img {
+    filter: brightness(0);
+}
+
+.arrows button:active {
+    transform: scale(0.95);
 }
 
 .indicators {
@@ -265,13 +275,12 @@ section .list .item.active .content .action-btn {
     flex-direction: column;
     justify-content: flex-end;
     gap: 15px;
-    z-index: 10;
 }
 
 .indicators ul {
     display: flex;
-    gap: 10px;
     list-style: none;
+    gap: 10px;
 }
 
 .indicators ul li {
@@ -297,12 +306,16 @@ section .list .item.active .content .action-btn {
 .modal-container {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 10000;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
     justify-content: center;
     align-items: center;
+}
+
+.modal-show {
+    display: flex !important;
 }
 
 .modal-content {
@@ -314,10 +327,6 @@ section .list .item.active .content .action-btn {
     width: 90%;
     max-width: 500px;
     position: relative;
-}
-
-.modal-show {
-    display: flex !important;
 }
 
 .modal-close {
@@ -344,75 +353,94 @@ section .list .item.active .content .action-btn {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        display: none;
+    body {
+        overflow-y: auto;
     }
 
     header {
-        justify-content: flex-start;
-        padding: 20px;
+        padding: 15px;
     }
 
-    .left-group {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-logo {
+        font-size: 2rem;
+    }
+
+    .navbar {
+        display: block;
         width: 100%;
-        justify-content: flex-start;
-    }
-}
-
-.ping-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: 4px solid var(--secundaria);
-    padding: 15px 25px;
-    border-radius: 10px;
-    z-index: 10000;
-    animation: slideIn 0.5s ease forwards;
-}
-
-.ping-content {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.ping-icon {
-    font-size: 1.5rem;
-}
-
-.ping-text strong {
-    color: var(--claro);
-    font-family: 'Montserrat', sans-serif;
-}
-
-.ping-text p {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.ping-text a {
-    color: var(--secundaria);
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
     }
 
-    to {
-        transform: translateX(0);
+    .navbar ul {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    section .list .item {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 150px;
+    }
+
+    section .list .item .product-img {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 80%;
+        margin: 0 auto 20px auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    section .list .item .content {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    section .list .item .content h2 {
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    section .list .item .content .description {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    section .list .item .action-btn {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 85%;
+        margin: 0 auto;
         opacity: 1;
+        transform: none !important;
     }
-}
 
-.ping-notification.hide {
-    transform: translateX(120%);
-    transition: 0.5s;
+    .arrows {
+        top: 35%;
+        width: 95vw;
+    }
+
+    .arrows button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .indicators .number {
+        display: none;
+    }
 }

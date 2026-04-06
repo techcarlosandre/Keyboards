@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=League+Gothic&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=League+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Keyboards - Setup Dev</title>
 </head>
-
 <body>
     <header>
         <div class="nav-container">
             <div class="left-group">
                 <div class="nav-logo">CA</div>
             </div>
-
             <nav class="navbar">
                 <ul>
                     <li><a href="https://techcarlosandre.github.io/portfolio-carlos/">Início</a></li>
@@ -32,7 +27,6 @@
 
     <section class="container">
         <div class="list">
-
             <div class="item active">
                 <div class="product-img">
                     <img src="./img/1.png" alt="Teclado Custom">
@@ -40,12 +34,9 @@
                 <div class="content">
                     <p class="subtitle">Setup Profissional</p>
                     <h2>A Ferramenta Ideal</h2>
-                    <p class="description">
-                        O teclado não é apenas um periférico, é a extensão das suas ideias. Descubra como a escolha do
-                        switch e do layout pode aumentar sua produtividade.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-intro')">Saiba Mais</button>
+                    <p class="description">O teclado não é apenas um periférico, é a extensão das suas ideias. Descubra como a escolha do switch e do layout pode aumentar sua produtividade.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-intro')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -55,12 +46,9 @@
                 <div class="content">
                     <p class="subtitle">Linear</p>
                     <h2>Red Switch</h2>
-                    <p class="description">
-                        O favorito dos gamers e de quem busca velocidade. Acionamento linear, sem feedback tátil,
-                        garantindo resposta rápida e silenciosa.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-red')">Saiba Mais</button>
+                    <p class="description">O favorito dos gamers e de quem busca velocidade. Acionamento linear, sem feedback tátil, garantindo resposta rápida e silenciosa.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-red')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -70,12 +58,9 @@
                 <div class="content">
                     <p class="subtitle">Clicky</p>
                     <h2>Blue Switch</h2>
-                    <p class="description">
-                        O clássico som de máquina de escrever. Feedback tátil e sonoro audível, ideal para quem digita
-                        muito e quer precisão.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-blue')">Saiba Mais</button>
+                    <p class="description">O clássico som de máquina de escrever. Feedback tátil e sonoro audível, ideal para quem digita muito e quer precisão.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-blue')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -85,12 +70,9 @@
                 <div class="content">
                     <p class="subtitle">Tátil</p>
                     <h2>Brown Switch</h2>
-                    <p class="description">
-                        O equilíbrio perfeito. Possui o feedback tátil para sentir a tecla, mas sem o barulho alto. O
-                        preferido dos programadores.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-brown')">Saiba Mais</button>
+                    <p class="description">O equilíbrio perfeito. Possui o feedback tátil para sentir a tecla, mas sem o barulho alto. O preferido dos programadores.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-brown')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -100,12 +82,9 @@
                 <div class="content">
                     <p class="subtitle">Compacto</p>
                     <h2>Layout 60%</h2>
-                    <p class="description">
-                        Minimalismo e ergonomia. Remove o numpad e as setas para liberar espaço na mesa, melhorando a
-                        postura do mouse.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-60')">Saiba Mais</button>
+                    <p class="description">Minimalismo e ergonomia. Remove o numpad e as setas para liberar espaço na mesa, melhorando a postura do mouse.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-60')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -115,12 +94,9 @@
                 <div class="content">
                     <p class="subtitle">Full Size</p>
                     <h2>Layout 100%</h2>
-                    <p class="description">
-                        Produtividade máxima com teclado numérico incluso. Essencial para quem trabalha com dados e
-                        planilhas complexas.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-100')">Saiba Mais</button>
+                    <p class="description">Produtividade máxima com teclado numérico incluso. Essencial para quem trabalha com dados e planilhas complexas.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-100')">Saiba Mais</button>
             </div>
 
             <div class="item">
@@ -130,14 +106,10 @@
                 <div class="content">
                     <p class="subtitle">Ultra Compacto</p>
                     <h2>Layout 40%</h2>
-                    <p class="description">
-                        Para entusiastas. Focado em manter as mãos na posição inicial ("home row") usando camadas de
-                        atalhos para números e funções.
-                    </p>
-                    <button class="action-btn" onclick="abrirModal('modal-40')">Saiba Mais</button>
+                    <p class="description">Para entusiastas. Focado em manter as mãos na posição inicial ("home row") usando camadas de atalhos para números e funções.</p>
                 </div>
+                <button class="action-btn" onclick="abrirModal('modal-40')">Saiba Mais</button>
             </div>
-
         </div>
 
         <div class="arrows">
@@ -172,85 +144,6 @@
         </div>
     </div>
 
-    <div id="modal-red" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-red')">&times;</button>
-            <h3>Ficha Técnica: Red</h3>
-            <ul class="specs-list">
-                <li><strong>Tipo:</strong> Linear (Liso)</li>
-                <li><strong>Força:</strong> 45g (Leve)</li>
-                <li><strong>Som:</strong> Silencioso</li>
-            </ul>
-            <p>Ideal para jogos competitivos (FPS) e ambientes silenciosos.</p>
-        </div>
-    </div>
-
-    <div id="modal-blue" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-blue')">&times;</button>
-            <h3>Ficha Técnica: Blue</h3>
-            <ul class="specs-list">
-                <li><strong>Tipo:</strong> Clicky (Sonoro)</li>
-                <li><strong>Força:</strong> 60g (Pesado)</li>
-                <li><strong>Som:</strong> Alto (Click!)</li>
-            </ul>
-            <p>Ideal para datilografia e quem gosta de feedback auditivo claro.</p>
-        </div>
-    </div>
-
-    <div id="modal-brown" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-brown')">&times;</button>
-            <h3>Ficha Técnica: Brown</h3>
-            <ul class="specs-list">
-                <li><strong>Tipo:</strong> Tátil (Degrau)</li>
-                <li><strong>Força:</strong> 55g (Médio)</li>
-                <li><strong>Som:</strong> Moderado</li>
-            </ul>
-            <p>O melhor dos dois mundos. Perfeito para escritório e programação.</p>
-        </div>
-    </div>
-
-    <div id="modal-60" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-60')">&times;</button>
-            <h3>Layout 60%</h3>
-            <ul class="specs-list">
-                <li><strong>Teclas:</strong> ~61 Teclas</li>
-                <li><strong>Setas:</strong> Via Atalho (Geralmente)</li>
-                <li><strong>Espaço:</strong> Otimizado para mouse</li>
-            </ul>
-            <p>Muito popular entre devs e streamers pela estética limpa.</p>
-        </div>
-    </div>
-
-    <div id="modal-100" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-100')">&times;</button>
-            <h3>Layout 100%</h3>
-            <ul class="specs-list">
-                <li><strong>Teclas:</strong> 104/108 Teclas</li>
-                <li><strong>Numpad:</strong> Dedicado</li>
-                <li><strong>Função:</strong> Teclas F1-F12 dedicadas</li>
-            </ul>
-            <p>O padrão de mercado. Não exige adaptação e é completo.</p>
-        </div>
-    </div>
-
-    <div id="modal-40" class="modal-container">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal('modal-40')">&times;</button>
-            <h3>Layout 40%</h3>
-            <ul class="specs-list">
-                <li><strong>Teclas:</strong> 40 a 48 Teclas</li>
-                <li><strong>Numerais:</strong> Via Camada (Layer)</li>
-                <li><strong>Portabilidade:</strong> Extrema</li>
-            </ul>
-            <p>Curva de aprendizado alta, mas ergonomia superior (menos movimento das mãos).</p>
-        </div>
-    </div>
-
     <script src="./scripts.js"></script>
 </body>
-
 </html>
