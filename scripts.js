@@ -23,19 +23,18 @@ function setSlider() {
 
 nextButton.onclick = () => {
     list.style.setProperty('--calculation', 1)
-    active = active + 1 > lastPosition ? 0 : active + 1 
+    active = active + 1 > lastPosition ? 0 : active + 1
     setSlider()
     items[active].classList.add('active')
 }
 
 prevButton.onclick = () => {
     list.style.setProperty('--calculation', - 1)
-    active = active - 1 < firstPosition ? lastPosition : active - 1 
+    active = active - 1 < firstPosition ? lastPosition : active - 1
     setSlider()
     items[active].classList.add('active')
 }
 
-// Lógica dos Modais
 function abrirModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
@@ -57,3 +56,37 @@ document.querySelectorAll('.modal-container').forEach(modal => {
         }
     });
 });
+
+function adicionarAColecao(nomeTeclado) {
+    const notification = document.createElement('div');
+    notification.className = 'ping-notification';
+    notification.innerHTML = `
+        <div class="ping-content">
+            <span class="ping-icon">🔔</span>
+            <div class="ping-text">
+                <strong>Adicionado!</strong>
+                <p>${nomeTeclado} foi para sua lista.</p>
+                <a href="https://techcarlosandre.github.io/keyboard-collection/" target="_blank">Ver Coleção</a>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    let listaAtual = JSON.parse(localStorage.getItem('minha_colecao')) || [];
+
+    const novoItem = {
+        id: Date.now(),
+        titulo: nomeTeclado,
+        descricao: "Adicionado via catálogo de teclados",
+        comprado: false
+    };
+
+    listaAtual.push(novoItem);
+    localStorage.setItem('minha_colecao', JSON.stringify(listaAtual));
+
+    setTimeout(() => {
+        notification.classList.add('hide');
+        setTimeout(() => notification.remove(), 500);
+    }, 4000);
+}
