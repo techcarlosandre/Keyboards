@@ -1,364 +1,312 @@
+/* 1. RESET E VARIÁVEIS */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root {
-    --primaria: #cc0000;
-    --secundaria: #ff3b3b;
-    --escuro: #292727;
-    --maisEscuro: #050505;
-    --claro: #ffffff;
-    --vidro: rgba(255, 255, 255, 0.06);
+    --primaria: #cc0000;
+    --secundaria: #ff3b3b;
+    --escuro: #292727;
+    --maisEscuro: #050505;
+    --claro: #ffffff;
+    --vidro: rgba(255, 255, 255, 0.06);
 }
 
 body {
-    background-color: var(--maisEscuro);
-    color: var(--claro);
-    font-size: 16px;
-    overflow: hidden;
+    background-color: var(--maisEscuro);
+    color: var(--claro);
+    font-size: 16px;
+    overflow: hidden;
 }
 
+/* 2. HEADER E NAVBAR (Ajustado para o Layout da Foto 2) */
 header {
-    position: fixed;
-    width: 80vw;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    margin-top: 20px;
-    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between; /* Saiba Mais/CA na esquerda | Menu na direita */
+    align-items: center;
+    padding: 30px 50px;
+    z-index: 1000;
+    pointer-events: none;
 }
 
-header h1 {
-    color: var(--secundaria);
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(204, 0, 0, 0.4);
-    pointer-events: auto;
+/* Grupo da Esquerda: Titulo + CA */
+.left-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    pointer-events: auto;
 }
 
+header h2 {
+    color: var(--claro);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav-logo {
+    color: var(--secundaria);
+    font-family: 'League Gothic', sans-serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+}
+
+/* Menu da Direita */
+.navbar {
+    pointer-events: auto;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 25px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--vidro);
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover, 
+.navbar ul li a.active {
+    color: var(--claro);
+    text-shadow: 0 0 10px var(--secundaria);
+}
+
+/* 3. SECTION E BACKGROUND */
 section {
-    background-image: radial-gradient(circle at center, #520000, var(--maisEscuro));
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
+    background-image: radial-gradient(circle at center, #520000, var(--maisEscuro));
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
 }
 
 section .list {
-    width: 70vw;
-    height: 100%;
-    margin: auto;
-    position: relative;
-    z-index: 1;
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
 }
 
+/* 4. ITENS DO SLIDER (A lógica que eu tinha apagado) */
 section .list .item {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
 section .list .item.active {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 section .list .item .product-img {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
 }
 
 section .list .item .product-img img {
-    width: 100%;
-    transform: rotate(10deg);
-    transition: 0.5s;
-    transition-delay: 0.3s;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+    width: 100%;
+    transform: rotate(10deg);
+    transition: 0.5s;
+    transition-delay: 0.3s;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
 }
 
 section .list .item.active .product-img img {
-    transform: rotate(-5deg);
+    transform: rotate(-5deg);
 }
 
+/* 5. CONTEÚDO (TEXTOS) */
 section .list .item .content {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    padding-right: 5%;
-    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 5%;
+    z-index: 2;
 }
 
 section .list .item .content .subtitle,
 section .list .item .content h2,
 section .list .item .content .description,
 section .list .item .content .action-btn {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: 0.8s;
-}
-
-section .list .item .content .subtitle {
-    color: var(--secundaria);
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-section .list .item .content h2 {
-    font-size: 3.5em;
-    text-align: right;
-    color: var(--claro);
-    margin-bottom: 20px;
-    line-height: 1;
-}
-
-section .list .item .content .description {
-    color: rgba(255,255,255,0.8);
-    text-align: right;
-    max-width: 400px;
-    margin-bottom: 30px;
-}
-
-section .list .item .content .action-btn {
-    background: linear-gradient(45deg, var(--primaria), var(--secundaria));
-    color: white;
-    padding: 10px 30px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-section .list .item .content .action-btn:hover {
-    transition: none !important;
-    background: #000;
-    background-image: none;
-    border: 1px solid var(--primaria);
-    color: var(--secundaria);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateX(100px);
+    transition: 0.8s;
 }
 
 section .list .item.active .content .subtitle,
 section .list .item.active .content h2,
 section .list .item.active .content .description,
 section .list .item.active .content .action-btn {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
 }
 
-section .list .item.active .content h2 {
-    transition-delay: 0.3s;
+section .list .item .content .subtitle {
+    color: var(--secundaria);
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
-section .list .item.active .content .description {
-    transition-delay: 0.5s;
+section .list .item .content h2 {
+    font-size: 4rem;
+    text-align: right;
+    color: var(--claro);
+    margin-bottom: 20px;
+    line-height: 1;
 }
 
-section .list .item.active .content .action-btn {
-    transition-delay: 0.7s;
+section .list .item .content .description {
+    color: rgba(255,255,255,0.8);
+    text-align: right;
+    max-width: 450px;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
+/* 6. BOTÕES E INTERAÇÕES */
+section .list .item .content .action-btn {
+    background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+    color: white;
+    padding: 12px 35px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+section .list .item .content .action-btn:hover {
+    background: #000;
+    border: 1px solid var(--primaria);
+    color: var(--secundaria);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+}
+
+/* Delays das animações do conteúdo */
+section .list .item.active .content h2 { transition-delay: 0.3s; }
+section .list .item.active .content .description { transition-delay: 0.5s; }
+section .list .item.active .content .action-btn { transition-delay: 0.7s; }
+
+/* 7. SETAS (ARROWS) */
 .arrows {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    display: flex;
-    justify-content: space-between;
-    z-index: 100;
-    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92vw;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    pointer-events: none;
 }
 
 .arrows button {
-    pointer-events: auto;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--vidro);
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    cursor: pointer;
-    transition: 0.3s;
+    pointer-events: auto;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid var(--vidro);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .arrows button:hover {
-    background-color: var(--primaria);
-    transform: scale(1.1);
+    background-color: var(--primaria);
+    transform: scale(1.1);
 }
 
-.arrows button img {
-    width: 30px;
-    margin-top: 4px;
-}
+.arrows button img { width: 30px; margin-top: 4px; }
+.arrows button:nth-child(1) { transform: scale(-1); }
+.arrows button:nth-child(1):hover { transform: scale(-1.1); }
 
-.arrows button:nth-child(1) {
-    transform: scale(-1);
-}
-
-.arrows button:nth-child(1):hover {
-    transform: scale(-1.1);
-}
-
+/* 8. INDICADORES */
 .indicators {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 15px;
-    z-index: 10;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 15px;
+    z-index: 10;
 }
 
-.indicators ul {
-    display: flex;
-    gap: 10px;
-    list-style: none;
-}
+.indicators ul { display: flex; gap: 10px; list-style: none; }
+.indicators ul li { width: 50px; height: 5px; background-color: var(--primaria); opacity: 0.3; transition: 0.5s; }
+.indicators ul li.active { background-color: var(--claro); opacity: 1; box-shadow: 0 0 10px var(--secundaria); }
+.indicators .number { font-size: 5rem; font-family: 'League Gothic', sans-serif; }
 
-.indicators ul li {
-    width: 50px;
-    height: 5px;
-    background-color: var(--primaria);
-    opacity: 0.3;
-    transition: 0.5s;
-}
-
-.indicators ul li.active {
-    background-color: var(--claro);
-    opacity: 1;
-    box-shadow: 0 0 10px var(--secundaria);
-}
-
-.indicators .number {
-    font-size: 4em;
-    font-family: 'League Gothic', sans-serif;
-}
-
+/* 9. MODAIS */
 .modal-container {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    backdrop-filter: blur(10px);
-    justify-content: center;
-    align-items: center;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background: #1a1a1a;
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid var(--secundaria);
-    color: white;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 15px;
+    border-left: 5px solid var(--secundaria);
+    color: white;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
 }
 
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #666;
-    background: none;
-    border: none;
-}
+.modal-show { display: flex !important; }
+.modal-close { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 24px; color: #666; background: none; border: none; }
+.specs-list { list-style: none; margin-top: 20px; }
+.specs-list li { padding: 10px 0; border-bottom: 1px solid #333; display: flex; justify-content: space-between; }
 
-.specs-list {
-    list-style: none;
-    margin-top: 20px;
-}
-
-.specs-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #333;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Ajuste no Header para permitir cliques no menu */
-header {
-    position: fixed;
-    width: 90vw; /* Aumentado para dar mais espaço */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000; /* Garantir que fique acima de tudo */
-    margin-top: 20px;
-    pointer-events: auto; /* IMPORTANTE: Mudar de none para auto */
-}
-
-header h1 span {
-    color: var(--claro);
-}
-
-/* Estilização da Navbar */
-.navbar ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px 25px;
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--vidro);
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: #888;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-.navbar ul li a:hover {
-    color: var(--claro);
-    text-shadow: 0 0 10px var(--secundaria);
-}
-
-.navbar ul li a.active {
-    color: var(--secundaria);
-}
-
-
+/* 10. MEDIA QUERIES */
 @media (max-width: 768px) {
-    .navbar {
-        display: none;
-    }
-}
-
-.modal-show {
-    display: flex !important;
+    .navbar { display: none; }
+    header { justify-content: center; }
+    .left-group { gap: 10px; }
 }
