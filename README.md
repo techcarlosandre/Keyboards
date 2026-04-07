@@ -51,7 +51,7 @@ UX de Conversão: Transformar uma página de portfólio em uma ferramenta útil 
 Clone este repositório:
 
 Bash
-git clone https://github.com/techcarlosandre/techkeyboards.git
+git clone https://github.com/techcarlosandre/keyboards.git
 Certifique-se de que as imagens numeradas e nomeadas estão na pasta /img.
 
 Abra o arquivo index.html no seu navegador.
