@@ -113,14 +113,7 @@ section .list .item .product-img {
 
 section .list .item .product-img img {
     width: 100%;
-    transform: rotate(10deg);
-    transition: 0.5s;
-    transition-delay: 0.3s;
     filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
-}
-
-section .list .item.active .product-img img {
-    transform: rotate(-5deg);
 }
 
 section .list .item .content {
@@ -137,44 +130,19 @@ section .list .item .content {
     pointer-events: none;
 }
 
-section .list .item .content .subtitle,
-section .list .item .content h2,
-section .list .item .content .description {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: 0.8s;
-}
-
-section .list .item.active .content .subtitle,
-section .list .item.active .content h2,
-section .list .item.active .content .description {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-section .list .item .content .subtitle {
-    color: var(--secundaria);
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
 section .list .item .content h2 {
     font-family: var(--fonte-destaque);
     font-size: 5rem;
     text-align: right;
-    color: var(--claro);
-    margin-bottom: 20px;
     line-height: 0.9;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 section .list .item .content .description {
-    color: rgba(255, 255, 255, 0.8);
     text-align: right;
     max-width: 450px;
-    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
 }
 
@@ -185,29 +153,13 @@ section .list .item .action-btn {
     background: linear-gradient(45deg, var(--primaria), var(--secundaria));
     color: white;
     padding: 12px 35px;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 800;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: transform 0.8s, opacity 0.8s, background 0.6s ease-in-out, color 0.6s ease-in-out, border 0.6s ease-in-out;
     z-index: 999;
     pointer-events: auto !important;
-}
-
-section .list .item.active .action-btn {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-section .list .item .action-btn:hover {
-    background: #000000;
-    color: var(--secundaria);
-    border: 1px solid var(--secundaria);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
 }
 
 .arrows {
@@ -227,43 +179,19 @@ section .list .item .action-btn:hover {
     width: 55px;
     height: 55px;
     border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.6s ease-in-out, border-color 0.6s ease-in-out, transform 0.3s ease;
+    transition: 0.4s;
 }
 
-.arrows button img {
-    width: 25px;
-    transition: filter 0.6s ease;
-}
-
-.arrows button:nth-child(1) img {
-    transform: scaleX(-1);
-}
-
-.arrows button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-color: rgba(255, 255, 255, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-}
-
-.arrows button:nth-child(1):hover img {
-    transform: scaleX(-1);
-}
-
-.arrows button:hover img {
-    filter: brightness(0);
-}
-
-.arrows button:active {
-    transform: scale(0.95);
-}
+.arrows button img { width: 25px; }
+.arrows button:nth-child(1) img { transform: scaleX(-1); }
+.arrows button:hover { background-color: rgba(255, 255, 255, 0.9); }
+.arrows button:hover img { filter: brightness(0); }
 
 .indicators {
     position: absolute;
@@ -277,170 +205,103 @@ section .list .item .action-btn:hover {
     gap: 15px;
 }
 
-.indicators ul {
-    display: flex;
-    list-style: none;
-    gap: 10px;
-}
-
-.indicators ul li {
-    width: 50px;
-    height: 5px;
-    background-color: var(--primaria);
-    opacity: 0.3;
-    transition: 0.5s;
-}
-
-.indicators ul li.active {
-    background-color: var(--claro);
-    opacity: 1;
-    box-shadow: 0 0 10px var(--secundaria);
-}
-
-.indicators .number {
-    font-size: 5rem;
-    font-family: var(--fonte-destaque);
-    opacity: 0.5;
-}
+.indicators ul { display: flex; list-style: none; gap: 10px; }
+.indicators ul li { width: 50px; height: 5px; background-color: var(--primaria); opacity: 0.3; transition: 0.5s; }
+.indicators ul li.active { background-color: var(--claro); opacity: 1; box-shadow: 0 0 10px var(--secundaria); }
+.indicators .number { font-size: 5rem; font-family: var(--fonte-destaque); opacity: 0.5; }
 
 .modal-container {
     display: none;
     position: fixed;
     z-index: 10000;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
     justify-content: center;
     align-items: center;
 }
 
-.modal-show {
-    display: flex !important;
-}
+.modal-show { display: flex !important; }
 
 .modal-content {
-    background: #1a1a1a;
-    padding: 40px;
-    border-radius: 15px;
-    border-left: 5px solid var(--secundaria);
-    color: white;
-    width: 90%;
-    max-width: 500px;
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 550px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #666;
-    background: none;
-    border: none;
+.modal-content h3 {
+    font-family: var(--fonte-destaque);
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: var(--secundaria);
 }
 
-.specs-list {
-    list-style: none;
-    margin-top: 20px;
-}
+.recommendations { display: flex; flex-direction: column; gap: 15px; }
 
-.specs-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #333;
+.rec-card {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+.rec-card img { width: 100px; height: 70px; object-fit: contain; background: #000; border-radius: 6px; }
+.rec-info { display: flex; flex-direction: column; gap: 4px; flex-grow: 1; }
+.rec-info strong { font-size: 0.9rem; color: #fff; }
+.rec-info span { font-size: 0.75rem; color: #888; }
+.rec-info a { color: var(--secundaria); font-size: 0.8rem; font-weight: bold; text-decoration: none; }
+.rec-info a:hover { text-decoration: underline; }
+
+.btn-add-item { background: transparent; color: var(--secundaria); border: none; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-transform: lowercase; }
+.btn-add-item:hover { color: #fff; }
+
+.modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+
+.ping-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 20000;
+    background: #1a1a1a;
+    border-left: 4px solid var(--secundaria);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.5s;
+}
+
+.ping-notification.hide { transform: translateX(120%); opacity: 0; }
+.ping-content { display: flex; align-items: center; gap: 15px; }
+.ping-icon { font-size: 1.5rem; }
+.ping-text strong { display: block; color: #fff; font-size: 0.9rem; }
+.ping-text p { font-size: 0.8rem; color: #aaa; margin: 2px 0 5px; }
+.ping-text a { color: var(--secundaria); font-size: 0.75rem; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
 @media (max-width: 768px) {
-    body {
-        overflow-y: auto;
-    }
-
-    header {
-        padding: 15px;
-    }
-
-    .nav-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-logo {
-        font-size: 2rem;
-    }
-
-    .navbar {
-        display: block;
-        width: 100%;
-    }
-
-    .navbar ul {
-        justify-content: center;
-        padding: 10px;
-    }
-
-    section .list .item {
-        flex-direction: column;
-        justify-content: center;
-        padding-top: 150px;
-    }
-
-    section .list .item .product-img {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-        width: 80%;
-        margin: 0 auto 20px auto;
-        display: flex;
-        justify-content: center;
-    }
-
-    section .list .item .content {
-        position: relative;
-        top: 0;
-        right: 0;
-        transform: none;
-        width: 100%;
-        align-items: center;
-        text-align: center;
-        padding: 0 15px;
-    }
-
-    section .list .item .content h2 {
-        font-size: 2.8rem;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    section .list .item .content .description {
-        text-align: center;
-        max-width: 100%;
-        margin-bottom: 30px;
-    }
-
-    section .list .item .action-btn {
-        position: relative;
-        bottom: 0;
-        right: 0;
-        width: 85%;
-        margin: 0 auto;
-        opacity: 1;
-        transform: none !important;
-    }
-
-    .arrows {
-        top: 35%;
-        width: 95vw;
-    }
-
-    .arrows button {
-        width: 45px;
-        height: 45px;
-    }
-
-    .indicators .number {
-        display: none;
-    }
+    body { overflow-y: auto; }
+    header { padding: 15px; }
+    .nav-container { flex-direction: column; gap: 10px; }
+    .nav-logo { font-size: 2rem; }
+    .navbar ul { padding: 8px 15px; gap: 10px; }
+    section .list .item { flex-direction: column; padding-top: 150px; }
+    section .list .item .product-img { position: relative; width: 80%; top: 0; margin: 0 auto; transform: none; }
+    section .list .item .content { position: relative; width: 100%; top: 0; transform: none; align-items: center; text-align: center; padding: 0 20px; }
+    section .list .item .content h2 { font-size: 3rem; text-align: center; }
+    section .list .item .action-btn { position: relative; bottom: 0; width: 80%; margin: 20px auto 0; opacity: 1; transform: none !important; }
+    .indicators .number { display: none; }
+    .rec-card { flex-wrap: wrap; }
+    .btn-add-item { width: 100%; text-align: right; padding-top: 10px; }
 }

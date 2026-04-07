@@ -12,13 +12,14 @@ let lastPosition = items.length - 1
 
 function setSlider() {
     let itemOld = container.querySelector('.list .item.active')
-    itemOld.classList.remove('active')
+    if (itemOld) itemOld.classList.remove('active')
 
     let dotsOld = indicator.querySelector('ul li.active')
-    dotsOld.classList.remove('active')
-    dots[active].classList.add('active')
+    if (dotsOld) dotsOld.classList.remove('active')
+    
+    if (dots[active]) dots[active].classList.add('active')
 
-    indicator.querySelector('.number').innerHTML = '0' + (active + 1)
+    indicator.querySelector('.number').innerHTML = (active + 1) < 10 ? '0' + (active + 1) : (active + 1)
 }
 
 nextButton.onclick = () => {
@@ -29,64 +30,63 @@ nextButton.onclick = () => {
 }
 
 prevButton.onclick = () => {
-    list.style.setProperty('--calculation', - 1)
+    list.style.setProperty('--calculation', -1)
     active = active - 1 < firstPosition ? lastPosition : active - 1
     setSlider()
     items[active].classList.add('active')
 }
 
 function abrirModal(modalId) {
-    const modal = document.getElementById(modalId);
+    const modal = document.getElementById(modalId)
     if (modal) {
-        modal.classList.add('modal-show');
+        modal.classList.add('modal-show')
     }
 }
 
 function fecharModal(modalId) {
-    const modal = document.getElementById(modalId);
+    const modal = document.getElementById(modalId)
     if (modal) {
-        modal.classList.remove('modal-show');
+        modal.classList.remove('modal-show')
     }
 }
 
 document.querySelectorAll('.modal-container').forEach(modal => {
     modal.addEventListener('click', (event) => {
         if (event.target === modal) {
-            fecharModal(modal.id);
+            fecharModal(modal.id)
         }
-    });
-});
+    })
+})
 
 function adicionarAColecao(nomeTeclado) {
-    const notification = document.createElement('div');
-    notification.className = 'ping-notification';
-    notification.innerHTML = `
-        <div class="ping-content">
-            <span class="ping-icon">🔔</span>
-            <div class="ping-text">
-                <strong>Adicionado!</strong>
-                <p>${nomeTeclado} foi para sua lista.</p>
-                <a href="https://techcarlosandre.github.io/keyboard-collection/" target="_blank">Ver Coleção</a>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(notification);
-
-    let listaAtual = JSON.parse(localStorage.getItem('minha_colecao')) || [];
+    let listaAtual = JSON.parse(localStorage.getItem('minha_colecao')) || []
 
     const novoItem = {
         id: Date.now(),
         titulo: nomeTeclado,
-        descricao: "Adicionado via catálogo de teclados",
+        descricao: "Adicionado via catálogo profissional",
         comprado: false
-    };
+    }
 
-    listaAtual.push(novoItem);
-    localStorage.setItem('minha_colecao', JSON.stringify(listaAtual));
+    listaAtual.push(novoItem)
+    localStorage.setItem('minha_colecao', JSON.stringify(listaAtual))
+
+    const notification = document.createElement('div')
+    notification.className = 'ping-notification'
+    notification.innerHTML = `
+        <div class="ping-content">
+            <span class="ping-icon">🔔</span>
+            <div class="ping-text">
+                <strong>Sucesso!</strong>
+                <p>${nomeTeclado} adicionado.</p>
+                <a href="https://techcarlosandre.github.io/keyboard-collection/" target="_blank">Abrir Lista</a>
+            </div>
+        </div>
+    `
+    document.body.appendChild(notification)
 
     setTimeout(() => {
-        notification.classList.add('hide');
-        setTimeout(() => notification.remove(), 500);
-    }, 4000);
+        notification.classList.add('hide')
+        setTimeout(() => notification.remove(), 500)
+    }, 3000)
 }

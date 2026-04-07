@@ -1,69 +1,66 @@
-# ⌨️ TechKeyboards - Mechanical Keyboard Showcase
+⌨️ TechKeyboards - Experience & Marketplace Showcase
+Uma interface imersiva e funcional para explorar e colecionar o melhor do hardware mecânico.
 
-> *Uma interface imersiva para explorar o mundo dos teclados mecânicos.*
+📖 Sobre o Projeto
+O TechKeyboards evoluiu de uma simples Landing Page para uma ferramenta de curadoria interativa. O projeto agora guia o usuário desde os conceitos básicos de switches mecânicos até a escolha do setup ideal (60%, TKL, Full-Size).
 
-## 📖 Sobre o Projeto
+Além do foco em Experiência do Usuário (UX) visual, a aplicação agora conta com integração inteligente de pesquisa de mercado e persistência de dados local para que entusiastas possam montar sua "wishlist" de teclados.
 
-O **TechKeyboards** é uma Landing Page interativa desenvolvida para apresentar diferentes tipos de switches e layouts de teclados mecânicos. O projeto foca em **Experiência do Usuário (UX)** visual, utilizando transições de elementos, manipulação do DOM e efeitos de iluminação via CSS.
+🚀 Tecnologias Utilizadas
+HTML5 Semântico: Estrutura modular preparada para SEO.
 
-A ideia central foi criar um ambiente que remete ao setup de um desenvolvedor ou gamer, utilizando uma paleta de cores "Dark Mode" com destaques em vermelho neon, seguindo a identidade visual do meu portfólio pessoal.
+CSS3 Avançado:
 
----
+Glassmorphism & Neumorphism: Combinação de efeitos de vidro e profundidade.
 
-## 🚀 Tecnologias Utilizadas
+Responsive Design: Interface adaptativa para Mobile e Desktop.
 
--   **HTML5 Semântico:** Estrutura organizada e acessível.
--   **CSS3 Moderno:**
-    -   Uso de **CSS Variables** (`:root`) para consistência de cores.
-    -   **Glassmorphism** (Efeito de vidro) nos modais e botões.
-    -   **Animações Keyframes** e Transições avançadas.
-    -   **Z-Index Management** para controle de camadas visuais.
--   **JavaScript (Vanilla ES6+):**
-    -   Lógica de Carrossel (Slider) sem frameworks.
-    -   Manipulação de Classes para estados ativos.
-    -   Sistema de **Modais Dinâmicos** para detalhes técnicos.
+Dynamic Indicators: Sistema de barras indicadoras que sincronizam com o slider.
 
----
+JavaScript (Vanilla ES6+):
 
-## ✨ Funcionalidades Destacadas
+Lógica de Slider Circular: Transição infinita entre categorias.
 
-### 1. Slider Interativo com "Fade-In" em Cascata
-Ao trocar de slide, os elementos (título, descrição, botão) não aparecem todos de uma vez. Foi implementado um `transition-delay` em cascata para criar uma sensação de fluidez e elegância na entrada das informações.
+Marketplace Deep Linking: Links dinâmicos que geram pesquisas de preço no Google automaticamente.
 
-### 2. Botão com Resposta Instantânea (Instant Hover)
-Diferente das transições suaves do resto do site, o botão de ação ("Saiba Mais") foi programado para ter uma resposta **instantânea** ao passar o mouse (`transition: none !important`). Isso cria uma sensação de agilidade e "clique tátil", similar a um switch de teclado mecânico.
+LocalStorage Integration: Sistema de coleção que salva as escolhas do usuário no navegador.
 
-### 3. Modais de Detalhes Técnicos
-Cada teclado possui um modal oculto que é ativado via JavaScript, trazendo especificações técnicas reais (Força de atuação, tipo de switch, etc), mantendo o usuário na mesma página sem recarregamentos.
+✨ Funcionalidades Destacadas
+1. Curadoria Educativa (Slide 01)
+O projeto não apenas vende uma ideia, ele educa. O primeiro slide é dedicado a explicar a anatomia de um teclado mecânico, elevando o valor percebido pelo usuário antes da navegação pelos produtos.
 
----
+2. Comparador de Preços Dinâmico
+Dentro de cada modal de categoria (Red Switch, Blue Switch, 60%, etc.), o usuário encontra duas recomendações premium. Cada recomendação possui um link que dispara uma busca em tempo real no Google Shopping, garantindo que o usuário sempre encontre o menor preço.
 
-## 🧠 Aprendizados e Desafios
+3. Sistema de Wishlist (Adicionar à Coleção)
+Utilizando a API de localStorage, implementamos a funcionalidade de "Adicionar". O usuário pode marcar seus teclados favoritos, e esses dados são sincronizados com o módulo de coleção do portfólio, permitindo uma experiência personalizada.
 
-Durante o desenvolvimento do **TechKeyboards**, foquei em resolver desafios como:
+4. Slider com Numeração Dinâmica
+Implementação de um contador de estados no JavaScript que traduz o índice do array do slider para uma interface visual (01, 02, etc.), melhorando a orientação espacial do usuário na página.
 
-* **Gerenciamento de Clique (Pointer Events):** Utilizei `pointer-events: none` nos itens inativos do slider para garantir que botões invisíveis não bloqueassem o clique do usuário.
-* **Sincronia de Animações:** Ajustar o tempo das transições para que a imagem do teclado rotacionasse ao mesmo tempo que o texto entrava na tela.
-* **Identidade Visual:** Adaptação completa do tema para utilizar variáveis globais, facilitando a manutenção futura das cores do projeto.
+🧠 Aprendizados e Evoluções
+Nesta nova etapa do TechKeyboards, os principais desafios superados foram:
 
----
+Sincronização de Dados: Garantir que o estado do slider (indicadores, número e imagens) permanecesse consistente durante navegações rápidas.
 
-## 🔧 Como Executar
+Segurança de Recursos Externos: Transição de links de imagens externas instáveis para um repositório local otimizado, eliminando erros de carregamento e CORS.
 
-1.  Clone este repositório:
-    ```bash
-    git clone [https://github.com/SEU-USUARIO/techkeyboards.git](https://github.com/SEU-USUARIO/techkeyboards.git)
-    ```
-2.  Abra o arquivo `index.html` no seu navegador preferido.
+UX de Conversão: Transformar uma página de portfólio em uma ferramenta útil que ajuda o usuário na decisão de compra através de links externos.
 
----
+🔧 Como Executar
+Clone este repositório:
 
-## 📂 Estrutura de Pastas
+Bash
+git clone https://github.com/techcarlosandre/techkeyboards.git
+Certifique-se de que as imagens numeradas e nomeadas estão na pasta /img.
 
-```bash
+Abra o arquivo index.html no seu navegador.
+
+📂 Estrutura de Pastas
+Bash
 /
-├── img/             # Imagens dos teclados (PNG com fundo transparente)
-├── index.html       # Estrutura principal
-├── styles.css       # Estilização global e animações
-├── scripts.js       # Lógica do slider e modais
-└── README.md        # Documentação
+├── img/             # Imagens otimizadas (Anivia, Vortex, Evolut, etc.)
+├── index.html       # Estrutura modular com 7 slides e modais
+├── styles.css       # Estilização global, indicadores e notificações
+├── scripts.js       # Lógica do slider, modais e integração de coleção
+└── README.md        # Documentação do projeto
